@@ -35,7 +35,7 @@ module.exports.createUser = (req, res, next) => {
     }))
     .then((user) => res.status(201).send({
       name: user.name,
-      _id: user._id,
+      _id: user._id;
     }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -54,7 +54,7 @@ module.exports.getCurrentUser = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('There is no such user');
       }
-      return res.status(200).send(user);
+      return res.status(200).send(user,{message:"User found"});
     })
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
